@@ -3,10 +3,7 @@ package com.thoughtworks.capability.gtb.restfulapidesign.api;
 import com.thoughtworks.capability.gtb.restfulapidesign.domain.Student;
 import com.thoughtworks.capability.gtb.restfulapidesign.service.StudentService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +23,10 @@ public class StudentController {
     @GetMapping("/students")
     public ResponseEntity<List<Student>> getAllStudents() {
         return studentService.getAllStudents();
+    }
+
+    @DeleteMapping("/students/{id}")
+    public void deleteStudentById(@PathVariable int id) {
+        studentService.deleteStudentById(id);
     }
 }

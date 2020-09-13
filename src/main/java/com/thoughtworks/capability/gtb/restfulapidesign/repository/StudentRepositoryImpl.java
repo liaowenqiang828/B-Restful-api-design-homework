@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class StudentRepositoryImpl implements StudentRepository {
@@ -23,11 +24,17 @@ public class StudentRepositoryImpl implements StudentRepository {
 
     @Override
     public Student findById(int id) {
-        return studentList.get(id);
+        return studentList.get(id - 1);
     }
 
     @Override
     public void deleteById(int id) {
-        studentList.remove(id);
+        studentList.remove(id - 1);
+    }
+
+    @Override
+    public void deleteByName(String name){
+        List<Student> studentRemoved = studentList.stream().filter(student ->
+                student.getName().equals(name)).collect(Collectors.toList());
     }
 }

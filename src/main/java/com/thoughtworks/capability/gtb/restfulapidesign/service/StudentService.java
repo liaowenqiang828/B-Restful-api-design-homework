@@ -29,4 +29,8 @@ public class StudentService {
     public ResponseEntity<List<Student>> getAllStudents() {
         return ResponseEntity.ok(studentRepository.findAll());
     }
+
+    public void deleteStudentById(int id) {
+        studentRepository.deleteById(id);
+    }
 }
