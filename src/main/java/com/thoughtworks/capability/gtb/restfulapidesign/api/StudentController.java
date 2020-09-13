@@ -21,8 +21,11 @@ public class StudentController {
     }
 
     @GetMapping("/students")
-    public ResponseEntity<List<Student>> getAllStudents() {
-        return studentService.getAllStudents();
+    public ResponseEntity<List<Student>> getAllStudents(
+            @RequestParam(value = "gender", required = false)
+            String gender
+            ) {
+        return studentService.getAllStudents(gender);
     }
 
     @DeleteMapping("/students/{id}")
