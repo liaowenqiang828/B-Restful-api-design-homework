@@ -42,8 +42,20 @@ public class StudentService {
         studentRepository.deleteById(id);
     }
 
-
     public ResponseEntity<Student> getStudentById(int id) {
         return ResponseEntity.ok(studentRepository.findById(id));
+    }
+
+    public void updateStudentInfoById(int id, Student student) {
+        Student studentTemp = studentRepository.findById(id);
+        if (null != student.getName()) {
+            studentTemp.setName(student.getName());
+        }
+        if (null != student.getNote()) {
+            studentTemp.setNote(student.getNote());
+        }
+        if (null != student.getGender()) {
+            studentTemp.setGender(student.getGender());
+        }
     }
 }

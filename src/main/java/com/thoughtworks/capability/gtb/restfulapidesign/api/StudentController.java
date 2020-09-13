@@ -37,4 +37,10 @@ public class StudentController {
     public ResponseEntity<Student> getStudentById(@PathVariable("id") int id) {
         return studentService.getStudentById(id);
     }
+
+    @PatchMapping("/students/{id}")
+    public void updateStudentInfoById(@PathVariable("id") int id,
+                                      @RequestBody Student student) {
+        studentService.updateStudentInfoById(id, student);
+    }
 }
