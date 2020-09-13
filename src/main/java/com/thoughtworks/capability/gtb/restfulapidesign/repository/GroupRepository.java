@@ -11,4 +11,6 @@ public interface GroupRepository {
     void divideGroupRandomly(List<Student> studentList);
 
     List<Group> findAll();
+
+    Group findById(int id);
 }

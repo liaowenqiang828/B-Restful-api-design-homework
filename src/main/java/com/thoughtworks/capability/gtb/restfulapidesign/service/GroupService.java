@@ -18,7 +18,16 @@ public class GroupService {
     }
 
     public ResponseEntity<List<Group>> getGroupList() {
-        groupRepository.divideGroupRandomly(studentRepository.findAll());
+        if (groupRepository.findAll().size() == 0) {
+            groupRepository.divideGroupRandomly(studentRepository.findAll());
+        }
         return ResponseEntity.ok(groupRepository.findAll());
+    }
+
+    public void updateGroupName(int id, Group group) {
+        Group groupTemp = groupRepository.findById(id);
+        if (null != group.getName() && !group.getName().equals(groupTemp.getName())) {
+            groupTemp.setName(group.getName());
+        }
     }
 }

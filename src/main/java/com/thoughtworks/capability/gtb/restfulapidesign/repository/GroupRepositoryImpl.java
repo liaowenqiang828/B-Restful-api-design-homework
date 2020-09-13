@@ -27,8 +27,12 @@ public class GroupRepositoryImpl implements GroupRepository {
 
     @Override
     public List<Group> findAll() {
-
         return groupList;
+    }
+
+    @Override
+    public Group findById(int id) {
+        return groupList.get(id - 1);
     }
 
     private void dividerStudentWhenStudentNumberLessOrEqualThanTotalTeamNum(List<Student> studentList, int remainder) {
