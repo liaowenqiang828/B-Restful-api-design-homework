@@ -32,4 +32,9 @@ public class StudentController {
     public void deleteStudentById(@PathVariable int id) {
         studentService.deleteStudentById(id);
     }
+
+    @GetMapping("/students/{id}")
+    public ResponseEntity<Student> getStudentById(@PathVariable("id") int id) {
+        return studentService.getStudentById(id);
+    }
 }

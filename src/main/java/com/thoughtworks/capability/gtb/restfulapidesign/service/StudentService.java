@@ -41,4 +41,9 @@ public class StudentService {
     public void deleteStudentById(int id) {
         studentRepository.deleteById(id);
     }
+
+
+    public ResponseEntity<Student> getStudentById(int id) {
+        return ResponseEntity.ok(studentRepository.findById(id));
+    }
 }
